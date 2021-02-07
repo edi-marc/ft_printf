@@ -1,0 +1,23 @@
+TEST FT_PRINTF
+
+Simple Conversion Management
+- Simply check each conversion without any flags 'cspdiuxX%' - Try special cases like 0 or smallest int or empty string or null pointer - Try with multiple arguments/conversions - Try the various conversions in the middle of a sentence (with other characters before and/or after)
+
+Simple Flags Management
+- Use the 's' conversion for all the following test - Check the 'minimum field width' with values bigger, equal and smaller than the string - Check the 'minimum field width' with values bigger, equal and smaller than the string with - - Check the 'minimum field width' with values bigger, equal and smaller than the string with 0 - Check the '.' with multiple precisions
+
+Advanced Flags Management
+- Use the 's' conversion for all the following test - Check '*' as minimum field width (try values like negative one, zero etc.) - Check '*' as precision (try values like negative one, zero etc.) - Check '*' as both with/without one other flag (try values like negative one, zero etc.) 
+Get Crazy
+- Try any combination of flags and conversions - Check what happens with duplicate flags
+
+Bonus
+
+nfge
+- Check if conversions 'n' 'f' 'g' 'e' are working fine (beware of 'n') with all the flag combinations - For each working conversion give 1 point - If all conversions are working give 1 bonus point
+
+l ll h hh
+- Check all the conversions with 'l' 'll' 'h' 'hh' with all the other flag combinations - For each working flag give 1 point - If all flags are working give 1 bonus point
+
+# + space
+- Check all the conversions with the flags '#', '+' and space with all the other flag combinations - For each working flag give 1 point - If all flags are working give 2 bonus points
