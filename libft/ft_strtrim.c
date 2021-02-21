@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/21 18:37:51 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/01/21 16:09:44 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/01/31 13:23:31 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	Write formatted output to stdout from the format string FORMAT
-*/
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int ft_printf(const char *fmt, ...)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	va_list	ap;
 	char	*p;
+	size_t	i;
+
+	p = NULL;
+	if (s1 && set)
+	{
+		while (*s1 && ft_strchr(set, *s1))
+			s1++;
+		i = ft_strlen(s1);
+		while (i && ft_strchr(set, s1[i]))
+			i--;
+		p = ft_substr(s1, 0, i + 1);
+	}
+	return (p);
 }

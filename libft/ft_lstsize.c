@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/21 18:37:51 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/01/28 18:18:11 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/01/28 18:34:07 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	Write formatted output to stdout from the format string FORMAT
-*/
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int ft_printf(const char *fmt, ...)
+int	ft_lstsize(t_list *lst)
 {
-	va_list	ap;
-	char	*p;
+	int i;
+
+	i = 0;
+	while (lst)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
 }

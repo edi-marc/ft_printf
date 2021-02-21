@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/21 18:37:51 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/01/29 14:24:48 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/01/30 19:48:27 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	Write formatted output to stdout from the format string FORMAT
-*/
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int ft_printf(const char *fmt, ...)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	va_list	ap;
-	char	*p;
+	t_list *temp;
+
+	if (lst)
+	{
+		while (*lst)
+		{
+			temp = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			*lst = temp;
+		}
+	}
 }

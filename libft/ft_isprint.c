@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/21 18:37:51 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/01/18 12:29:55 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/01/18 12:37:29 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	Write formatted output to stdout from the format string FORMAT
-*/
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int ft_printf(const char *fmt, ...)
+int	ft_isprint(int c)
 {
-	va_list	ap;
-	char	*p;
+	int r;
+
+	r = 0;
+	if (c > 31 && c < 127)
+		r = 1;
+	return (r);
 }

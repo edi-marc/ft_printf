@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/21 18:37:51 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/01/14 13:02:35 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/01/14 18:13:16 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	Write formatted output to stdout from the format string FORMAT
-*/
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int ft_printf(const char *fmt, ...)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	va_list	ap;
-	char	*p;
+	size_t i;
+
+	i = 0;
+	while (i < n)
+	{
+		*(unsigned char *)dst = ((unsigned char *)src)[i];
+		dst++;
+		if (((unsigned char *)src)[i] == (unsigned char)c)
+			return (dst);
+		i++;
+	}
+	return (0);
 }

@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/21 18:37:51 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/01/17 16:33:16 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/01/17 16:40:44 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	Write formatted output to stdout from the format string FORMAT
-*/
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int ft_printf(const char *fmt, ...)
+char	*ft_strchr(const char *s, int c)
 {
-	va_list	ap;
 	char	*p;
+	char	ch;
+	int		found;
+
+	p = 0;
+	ch = c;
+	found = 0;
+	while (*s != '\0' && !found)
+	{
+		if (*s == ch)
+		{
+			p = (char*)s;
+			found = 1;
+		}
+		s++;
+	}
+	if (*s == '\0' && c == 0)
+		p = (char *)s;
+	return (p);
 }

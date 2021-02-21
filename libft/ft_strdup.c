@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/21 18:37:51 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/01/21 10:58:08 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/01/21 13:32:58 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	Write formatted output to stdout from the format string FORMAT
-*/
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int ft_printf(const char *fmt, ...)
+char	*ft_strdup(const char *s1)
 {
-	va_list	ap;
-	char	*p;
+	size_t	len;
+	char	*str;
+
+	len = ft_strlen(s1) + 1;
+	str = ft_calloc(len, sizeof(*str));
+	if (str)
+		ft_memcpy(str, s1, len);
+	return (str);
 }

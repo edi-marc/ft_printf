@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/21 18:37:51 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/01/24 19:51:51 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/01/25 11:48:16 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	Write formatted output to stdout from the format string FORMAT
-*/
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int ft_printf(const char *fmt, ...)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	va_list	ap;
 	char	*p;
+	size_t	len;
+	size_t	i;
+
+	p = NULL;
+	i = 0;
+	if (s && f)
+	{
+		len = ft_strlen(s);
+		if ((p = ft_calloc(len + 1, sizeof(*p))))
+		{
+			while (i < len)
+			{
+				p[i] = f(i, s[i]);
+				i++;
+			}
+		}
+	}
+	return (p);
 }

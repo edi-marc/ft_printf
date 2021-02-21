@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/21 18:37:51 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/01/25 16:38:33 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/01/26 15:07:12 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	Write formatted output to stdout from the format string FORMAT
-*/
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int ft_printf(const char *fmt, ...)
+void	ft_putstr_fd(char *s, int fd)
 {
-	va_list	ap;
-	char	*p;
+	size_t	len;
+	size_t	i;
+
+	if (s)
+	{
+		len = ft_strlen(s);
+		i = 0;
+		while (i < len)
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
+	}
 }

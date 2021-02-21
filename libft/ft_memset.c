@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/21 18:37:51 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/01/12 18:10:52 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/01/13 18:53:47 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	Write formatted output to stdout from the format string FORMAT
-*/
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int ft_printf(const char *fmt, ...)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	va_list	ap;
 	char	*p;
+	int		i;
+
+	p = (char *)b;
+	i = 0;
+	while (((size_t)i < len) && len != 0)
+	{
+		*p = (unsigned char)c;
+		p++;
+		i++;
+	}
+	return (b);
 }
