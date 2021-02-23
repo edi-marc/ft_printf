@@ -6,12 +6,12 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/21 18:31:23 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/23 11:58:19 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include <stdio.h>
+#include "libftprintf.h"
 
 void	red(void)
 {
@@ -21,6 +21,11 @@ void	red(void)
 void	green(void)
 {
 	printf("\033[0;32m");
+}
+
+void	magenta(void)
+{
+	printf("\033[0;35m");
 }
 
 void	check_printf(int ft, int origin)
@@ -43,9 +48,59 @@ int		main(void)
 	int	ft;
 	int	origin;
 
-	origin = printf("ciao");
+	magenta();
+	printf("\n---- TEST START ----\n");
+
+	origin = printf("");
 	printf("\n");
-	ft = 4;
+	ft = ft_printf("");
 	check_printf(ft, origin);
+
+	origin = printf("😁🤯");
+	printf("\n");
+	ft = ft_printf("😁🤯");
+	check_printf(ft, origin);
+
+	origin = printf("c\0iao");
+	printf("\n");
+	ft = ft_printf("c\0iao");
+	check_printf(ft, origin);
+
+	origin = printf("\"");
+	printf("\n");
+	ft = ft_printf("\"");
+	check_printf(ft, origin);
+
+	origin = printf("H");
+	printf("\n");
+	ft = ft_printf("H");
+	check_printf(ft, origin);
+
+	origin = printf("Hello_world");
+	printf("\n");
+	ft = ft_printf("Hello_world");
+	check_printf(ft, origin);
+
+	origin = printf("\x43\x69\x61\x6f");
+	printf("\n");
+	ft = ft_printf("\x43\x69\x61\x6f");
+	check_printf(ft, origin);
+
+	origin = printf("\n\t\v\f\r");
+	printf("\n");
+	ft = ft_printf("\n\t\v\f\r");
+	check_printf(ft, origin);
+
+	/*	Not printable character	*/
+	origin = printf("\x7f");
+	printf("\n");
+	ft = ft_printf("\x7f");
+	check_printf(ft, origin);
+
+	origin = printf("Hell%c World", 'o');
+	printf("\n");
+	ft = ft_printf("Hell%c World", 'o');
+	check_printf(ft, origin);
+
 	return (0);
 }
