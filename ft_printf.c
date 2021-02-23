@@ -6,12 +6,15 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/23 11:56:06 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/23 20:34:33 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	Write formatted output to stdout from the format string FORMAT
+**	LIBRARY: libftprintf
+**	SYNOPSIS: Write formatted output to stdout from the format string FMT
+**
+**	DESCRIPTION:	
 */
 
 #include "libftprintf.h"
@@ -35,10 +38,7 @@ int		ft_printf(const char *fmt, ...)
 			flds->printed++;
 		}
 		if (*p)
-		{
-			p = check_conv_spec(p);
-			print_conv(ap, flds);
-		}
+			p = check_conv_spec(p, flds);
 	}
 	va_end(ap);
 	return (flds->printed);
@@ -54,13 +54,31 @@ void	init_fields(t_fields *flds)
 	flds->type = 0;
 }
 
-char	*check_conv_spec(char *p)
+char	*check_conv_spec(char *p, t_fields *flds)
 {
-	return (p);
+	char	*tmp;
+
+	tmp = ++p;
+	while (*p && !(ft_strchr(TYPES, (int)(*p))))
+		p++;
+	if (!(*p))
+		return (tmp);
+	else
+	{
+		p = check_conv(tmp, p, flds);
+		return (p);
+	}
+}
+
+char	*check_conv(char *tmp, char *p, t_fields *flds)
+{
+	tmp = 0;
+	flds = 0;
+	return(p);
 }
 
 void	print_conv(va_list ap, t_fields *flds)
 {
-	ap = 0;
+	ap = 0 ;
 	flds = 0;
 }

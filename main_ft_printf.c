@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/23 11:58:19 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/23 20:34:29 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,20 @@ int		main(void)
 	ft = ft_printf("\n\t\v\f\r");
 	check_printf(ft, origin);
 
-	/*	Not printable character	*/
+	// Not printable character
 	origin = printf("\x7f");
 	printf("\n");
 	ft = ft_printf("\x7f");
 	check_printf(ft, origin);
 
-	origin = printf("Hell%c World", 'o');
+	origin = printf("ciao%");
 	printf("\n");
-	ft = ft_printf("Hell%c World", 'o');
+	ft = ft_printf("ciao%");
+	check_printf(ft, origin);
+	
+	origin = printf("ciao%-32y+azyq");
+	printf("\n");
+	ft = ft_printf("ciao%-32y+azyq");
 	check_printf(ft, origin);
 
 	return (0);
