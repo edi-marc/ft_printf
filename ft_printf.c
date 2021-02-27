@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/23 20:34:33 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/27 11:57:53 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,39 @@
 **	LIBRARY: libftprintf
 **	SYNOPSIS: Write formatted output to stdout from the format string FMT
 **
-**	DESCRIPTION:	
+**	DESCRIPTION:
+**	Writes the C string pointed by format to the standard output (stdout).
+**	If format includes format specifiers (subsequences beginning with %),
+**	the additional arguments following format are formatted and inserted
+**	in the resulting string replacing their respective specifiers.
+**
+**	ISSUES:
+**	This implementation can't handle int overflow on width and/or precision
 */
 
 #include "libftprintf.h"
 
-int		ft_printf(const char *fmt, ...)
+static char	*get_conv_spec(char *p, t_fields *flds, va_list ap)
+{
+	while (*++p && ft_strchr(FLAGS, *p))
+		get_flag(*p, flds);
+	p = get_width(p, flds, ap);
+	p = get_precision(p, flds);
+	p = get_types(p, flds);
+	return (p);
+}
+
+static void	print_conv(t_fields *flds, va_list ap)
+{
+	if (flds->printed != ERR)
+	{
+		if (flds->type == 'c')
+			print_conv_c(flds, ap);
+		reset_fields(flds);
+	}
+}
+
+int			ft_printf(const char *fmt, ...)
 {
 	va_list		ap;
 	char		*p;
@@ -34,51 +61,15 @@ int		ft_printf(const char *fmt, ...)
 	{
 		while (*p && *p != PH)
 		{
-			ft_putchar_fd(*p++, STDO);
-			flds->printed++;
+			putchar_ftprintf(*p, flds);
+			p++;
 		}
 		if (*p)
-			p = check_conv_spec(p, flds);
+		{
+			p = get_conv_spec(p, flds, ap);
+			print_conv(flds, ap);
+		}
 	}
 	va_end(ap);
 	return (flds->printed);
-}
-
-void	init_fields(t_fields *flds)
-{
-	flds->printed = 0;
-	flds->minus = 0;
-	flds->zero = 0;
-	flds->star = 0;
-	flds->dot = -1;
-	flds->type = 0;
-}
-
-char	*check_conv_spec(char *p, t_fields *flds)
-{
-	char	*tmp;
-
-	tmp = ++p;
-	while (*p && !(ft_strchr(TYPES, (int)(*p))))
-		p++;
-	if (!(*p))
-		return (tmp);
-	else
-	{
-		p = check_conv(tmp, p, flds);
-		return (p);
-	}
-}
-
-char	*check_conv(char *tmp, char *p, t_fields *flds)
-{
-	tmp = 0;
-	flds = 0;
-	return(p);
-}
-
-void	print_conv(va_list ap, t_fields *flds)
-{
-	ap = 0 ;
-	flds = 0;
 }

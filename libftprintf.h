@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:02:15 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/23 19:08:47 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/27 15:04:17 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
-# define STDO 0
+# define STDO 1
 # define ERR -1
 
 /*
@@ -24,23 +24,34 @@
 **	value on TYPES
 */
 # define PH '%'
-# define TYPES "cspiduxX%"
-# define FLAGS "-0.*"
+# define TYPES "cspiduxXnfge%"
+# define ZERO 48
+# define SPACE 32
+# define STAR '*'
+# define FLAGS "-0#+\32"
+# define PREC '.'
 
 typedef struct	s_fields
 {
 	int		printed;
 	int		minus;
+	int		plus;
 	int		zero;
-	int		star;
+	int		space;
+	int		hash;
+	int		width;
 	int		dot;
 	char	type;
 }				t_fields;
 
 int				ft_printf(const char *fmt, ...);
 void			init_fields(t_fields *flds);
-char			*check_conv_spec(char *p, t_fields *flds);
-void			print_conv(va_list ap, t_fields *flds);
-char			*check_conv(char *tmp, char *p, t_fields *flds);
+void			reset_fields(t_fields *flds);
+void			putchar_ftprintf(char c, t_fields *flds);
+void			get_flag(char c, t_fields *flds);
+char			*get_width(char *p, t_fields *flds, va_list ap);
+char			*get_precision(char *p, t_fields *flds);
+char			*get_types(char *p, t_fields *flds);
+void			print_conv_c(t_fields *flds, va_list ap);
 
 #endif

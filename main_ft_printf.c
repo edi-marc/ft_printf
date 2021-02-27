@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/23 20:34:29 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/27 13:32:42 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	magenta(void)
 	printf("\033[0;35m");
 }
 
+void	reset(void)
+{
+	printf("\033[0m");
+}
+
 void	check_printf(int ft, int origin)
 {
 	printf("\n");
@@ -35,11 +40,13 @@ void	check_printf(int ft, int origin)
 	{
 		green();
 		printf("result = [OK]\n");
+		reset();
 	}
 	else
 	{
 		red();
 		printf("result = [KO] -- ft=%d - original=%d\n", ft, origin);
+		reset();
 	}
 }
 
@@ -50,15 +57,16 @@ int		main(void)
 
 	magenta();
 	printf("\n---- TEST START ----\n");
+	reset();
 
 	origin = printf("");
 	printf("\n");
 	ft = ft_printf("");
 	check_printf(ft, origin);
 
-	origin = printf("😁🤯");
+	origin = printf("😁🤯_OK");
 	printf("\n");
-	ft = ft_printf("😁🤯");
+	ft = ft_printf("😁🤯_OK");
 	check_printf(ft, origin);
 
 	origin = printf("c\0iao");
@@ -96,16 +104,63 @@ int		main(void)
 	printf("\n");
 	ft = ft_printf("\x7f");
 	check_printf(ft, origin);
-
-	origin = printf("ciao%");
+	
+	origin = printf("cia%c", 'o');
 	printf("\n");
-	ft = ft_printf("ciao%");
+	ft = ft_printf("cia%c", 'o');
 	check_printf(ft, origin);
 	
-	origin = printf("ciao%-32y+azyq");
+	origin = printf("Hell%c_Wo%cld", 'o', 'r');
 	printf("\n");
-	ft = ft_printf("ciao%-32y+azyq");
+	ft = ft_printf("Hell%c_Wo%cld", 'o', 'r');
 	check_printf(ft, origin);
 
+	int chr = -1;
+	unsigned char i = -1;
+	origin = printf("%c", i);
+	printf("\n");
+	ft = ft_printf("%c", i);
+	check_printf(ft, origin);
+	
+	origin = printf("-*#15%c", '%');
+	printf("\n");
+	ft = ft_printf("-*#15%c", '%');
+	check_printf(ft, origin);
+	
+	origin = printf("cia%c%c", NULL, '\x6f');
+	printf("\n");
+	ft = ft_printf("cia%c%c", NULL, '\x6f');
+	check_printf(ft, origin);
+
+	origin = printf("Hell%00c_Worl%5c", 'o', 'd');
+	printf("\n");
+	ft = ft_printf("Hell%00c_Worl%5c", 'o', 'd');
+	check_printf(ft, origin);
+
+	origin = printf("Hell%-5c_Worl%-5c_", NULL, 'd');
+	printf("\n");
+	ft = ft_printf("Hell%-5c_Worl%-5c_", NULL, 'd');
+	check_printf(ft, origin);
+
+	origin = printf("Hell%05c_Worl%-05c", 'o', 'd');
+	printf("\n");
+	ft = ft_printf("Hell%05c_Worl%-05c", 'o', 'd');
+	check_printf(ft, origin);
+
+	origin = printf("Hell%-1c_Worl%-c", 'o', 'd');
+	printf("\n");
+	ft = ft_printf("Hell%-1c_Worl%-c", 'o', 'd');
+	check_printf(ft, origin);
+
+	origin = printf("[Hell%*c_Worl%*c]", 12, 'o' , -6, 'd');
+	printf("\n");
+	ft = ft_printf("[Hell%*c_Worl%*c]", 12, 'o' , -6, 'd');
+	check_printf(ft, origin);
+	
+	origin = printf("[Hell%---000*c_Worl%-0*c]", 12, 'o' , -6, 'd');
+	printf("\n");
+	ft = ft_printf("[Hell%---000*c_Worl%-0*c]", 12, 'o' , -6, 'd');
+	check_printf(ft, origin);
+	
 	return (0);
 }
