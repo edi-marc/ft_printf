@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/27 16:11:36 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/27 17:22:20 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,9 +172,14 @@ int		main(void)
 	ft = ft_printf("%-%");
 	check_printf(ft, origin);
 	
-	origin = printf("%005%");
+	origin = printf("%005%_%.c", '1');
 	printf("\n");
-	ft = ft_printf("%005%");
+	ft = ft_printf("%005%_%.c", '1');
+	check_printf(ft, origin);
+	
+	origin = printf("Hell%.*c_Wor%.0cd", -1, 'o', 'l');
+	printf("\n");
+	ft = ft_printf("Hell%.*c_Wor%.0cd", -1, 'o', 'l');
 	check_printf(ft, origin);
 	
 	return (0);
