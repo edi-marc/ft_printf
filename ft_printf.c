@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/27 11:57:53 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/27 15:17:48 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void	print_conv(t_fields *flds, va_list ap)
 	{
 		if (flds->type == 'c')
 			print_conv_c(flds, ap);
+		else if (flds->type == PH)
+			print_conv_ph(flds);
 		reset_fields(flds);
 	}
 }

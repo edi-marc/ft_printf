@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 18:12:27 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/27 12:15:00 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/27 16:11:38 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,9 @@ char	*get_width(char *p, t_fields *flds, va_list ap)
 
 char	*get_precision(char *p, t_fields *flds)
 {
-	char	*dot;
-
-	if ((dot = ft_strchr(p, PREC)))
+	if (*p == PREC)
 	{
-		p = ++dot;
+		p++;
 		if (ft_isdigit(*p))
 			flds->dot = ft_atoi(p);
 		while (*p && ft_isdigit(*p))
