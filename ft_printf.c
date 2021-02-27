@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/27 15:17:48 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/27 17:03:14 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*get_conv_spec(char *p, t_fields *flds, va_list ap)
 	while (*++p && ft_strchr(FLAGS, *p))
 		get_flag(*p, flds);
 	p = get_width(p, flds, ap);
-	p = get_precision(p, flds);
+	p = get_precision(p, flds, ap);
 	p = get_types(p, flds);
 	return (p);
 }
