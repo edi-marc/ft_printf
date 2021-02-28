@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:10:32 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/27 19:48:11 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/28 16:34:35 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,29 +90,26 @@ void		print_conv_s(t_fields *flds, va_list ap)
 {
 	char	*s;
 	char	fill;
-	int		str_l;
+	size_t	max_s;
 
-	str_l = ft_strlen(s);
 	fill = flds->zero > 0 ? ZERO : SPACE;
-	s = (s = va_arg(ap, char *)) ? s : STR_N;
-	str_l = str_l > flds->dot ? str_l : flds->dot;
+	if (!(s = va_arg(ap, char *)))
+		s = STR_N;
+	if ((size_t)flds->dot < (max_s = ft_strlen(s)) && flds->dot > -1)
+		max_s = flds->dot;
+	flds->width = max_s < (size_t)flds->width ? flds->width - max_s : 0;
 	if (flds->minus > 0)
 	{
-		while (*s++ && str_l-- > 0)
-			putchar_ftprintf(*s, flds);
-		while (flds->width - str_l > 0)
-		{
+		while (max_s-- > 0)
+			putchar_ftprintf(*s++, flds);
+		while (flds->width-- > 0)
 			putchar_ftprintf(SPACE, flds);
-			(flds->width)--;
-		}
 	}
 	else
 	{
-		while (flds->width - 1 > 0)
-		{
+		while (flds->width-- > 0)
 			putchar_ftprintf(fill, flds);
-			(flds->width)--;
-		}
-		putchar_ftprintf(c, flds);
+		while (max_s-- > 0)
+			putchar_ftprintf(*s++, flds);
 	}
 }

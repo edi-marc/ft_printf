@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/27 17:22:20 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/28 16:33:25 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,5 +182,26 @@ int		main(void)
 	ft = ft_printf("Hell%.*c_Wor%.0cd", -1, 'o', 'l');
 	check_printf(ft, origin);
 	
+	origin = printf("[%-8.5s]_%s" , NULL, "Hello_World");
+	printf("\n");
+	ft = ft_printf("[%-8.5s]_%s", NULL, "Hello_World");
+	check_printf(ft, origin);
+	
+	origin = printf("[%0-6s][%4c][%.s]", "Hello", '\32', "World");
+	printf("\n");
+	ft = ft_printf("[%0-6s][%4c][%.s]", "Hello", '\32', "World");
+	check_printf(ft, origin);
+
+	origin = printf("[%05.1s][%-4c][%-.3s]", "Hello", '\32', "World");
+	printf("\n");
+	ft = ft_printf("[%05.1s][%-4c][%-.3s]", "Hello", '\32', "World");
+	check_printf(ft, origin);
+	
+	origin = printf("[%3.7s]_[%7.7s]" , "Hello" , "World");
+	printf("\n");
+	ft = ft_printf("[%3.7s]_[%7.7s]", "Hello" , "World");
+	check_printf(ft, origin);
+	
+
 	return (0);
 }

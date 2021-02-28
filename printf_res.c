@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 17:19:53 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/27 19:48:19 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/28 16:33:32 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(void)
 {
 	int i;
 
-	i = printf("[%s]", NULL );
+	i = printf("[%3.7s][%7.7s]", "Hello", "World");
 	printf("\n");
 	printf("result= %d\n", i);
 	return (0);
