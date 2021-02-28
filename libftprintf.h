@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:02:15 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/27 19:48:14 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/28 17:15:26 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ char			*get_precision(char *p, t_fields *flds, va_list ap);
 char			*get_types(char *p, t_fields *flds);
 void			print_conv_c(t_fields *flds, va_list ap);
 void			print_conv_s(t_fields *flds, va_list ap);
+void			print_conv_i(t_fields *flds, va_list ap);
 void			print_conv_ph(t_fields *flds);
 
 #endif

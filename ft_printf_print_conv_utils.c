@@ -6,12 +6,13 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:10:32 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/28 16:34:35 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/28 19:45:45 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **	FLAG '0' is ignored when flag '-' is present
+**	FLAG ' ' is ignored when flag '+' is present
 **
 **	Conversion specifier 'c':
 **		flag '0' results in undefined behavior with 'c'
@@ -30,7 +31,11 @@
 **		flag '+' results in undefined behavior with 'c'
 **		flag '#' results in undefined behavior with 'c'
 **		flag ' ' results in undefined behavior with 'c'
+**
+**	Conversion specifier 'i'/'d':
+**		flag '#' results in undefined behavior with 'i'/'d'
 */
+
 
 #include "libftprintf.h"
 
@@ -112,4 +117,9 @@ void		print_conv_s(t_fields *flds, va_list ap)
 		while (max_s-- > 0)
 			putchar_ftprintf(*s++, flds);
 	}
+}
+
+void		print_conv_i(t_fields *flds, va_list ap)
+{
+	(2 ^ (byte * 8) )/ 2
 }
