@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:02:15 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/28 17:15:26 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/01 20:27:49 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define TYPES "cspiduxXnfge%"
 # define ZERO 48
 # define SPACE 32
+# define MINUS '-'
 # define STR_N "(null)"
 # define STAR '*'
 # define FLAGS "-0#+\32"

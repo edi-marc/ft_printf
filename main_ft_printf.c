@@ -6,12 +6,13 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/28 16:33:25 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/01 20:27:36 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libftprintf.h"
+#include "limits.h"
 
 void	red(void)
 {
@@ -201,7 +202,32 @@ int		main(void)
 	printf("\n");
 	ft = ft_printf("[%3.7s]_[%7.7s]", "Hello" , "World");
 	check_printf(ft, origin);
+
+	origin = printf("[%5c]_[%-0c]" , NULL , "");
+	printf("\n");
+	ft = ft_printf("[%5c]_[%-0c]" , NULL , "");
+	check_printf(ft, origin);
+
+	origin = printf("[%-5i]_[%-0i]" , 1 , 2);
+	printf("\n");
+	ft = ft_printf("[%-5i]_[%-0i]" , 1 , 2);
+	check_printf(ft, origin);
+
+	origin = printf("[%-i]_[%-i]" , null , 0);
+	printf("\n");
+	ft = ft_printf("[%-i]_[%-i]" , null , 0);
+	check_printf(ft, origin);
+
+	//	Workaround for INT_MIN considering int as 4 bytes
+	origin = printf("[%-015i]_[%-020.15i]" ,-1 - 2147483647, INT_MAX);
+	printf("\n");
+	ft = ft_printf("[%-015i]_[%-020.15i]" ,-1 - 2147483647, INT_MAX);
+	check_printf(ft, origin);
 	
+	origin = printf("[%-i]_[%-i]" , null , 0);
+	printf("\n");
+	ft = ft_printf("[%-i]_[%-i]" , null , 0);
+	check_printf(ft, origin);
 
 	return (0);
 }

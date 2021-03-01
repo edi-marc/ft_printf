@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:10:32 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/28 19:45:45 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/01 20:31:45 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 **
 **	Conversion specifier 'i'/'d':
 **		flag '#' results in undefined behavior with 'i'/'d'
+**		if a precision is specified, the 0 flag is ignored
 */
-
 
 #include "libftprintf.h"
 
@@ -119,7 +119,53 @@ void		print_conv_s(t_fields *flds, va_list ap)
 	}
 }
 
+static void	print_conv_i_utils(t_fields *flds, char *n, char fill)
+{
+	if (flds->minus > 0)
+	{
+		if (*n == MINUS)
+			putchar_ftprintf(*n++, flds);
+		while (flds->dot-- > 0)
+			putchar_ftprintf(ZERO, flds);
+		while (*n)
+			putchar_ftprintf(*n++, flds);
+		while (flds->width-- > 0)
+			putchar_ftprintf(SPACE, flds);
+	}
+	else
+	{
+		while (flds->width-- > 0)
+			putchar_ftprintf(fill, flds);
+		if (*n == MINUS)
+			putchar_ftprintf(*n++, flds);
+		while (flds->dot-- > 0)
+			putchar_ftprintf(ZERO, flds);
+		while (*n)
+			putchar_ftprintf(*n++, flds);
+	}
+}
+
 void		print_conv_i(t_fields *flds, va_list ap)
 {
-	(2 ^ (byte * 8) )/ 2
+	char	*n;
+	char	fill;
+	size_t	max_s;
+	size_t	n_dgt;
+
+	if (!(n = ft_itoa(va_arg(ap, int))))
+		flds->printed = ERR;
+	else
+	{
+		fill = flds->zero > 0 && !(flds->dot > -1) ? ZERO : SPACE;
+		max_s = ft_strlen(n);
+		n_dgt = *n == MINUS && ft_isdigit(*(n + 1)) ? max_s - 1 : max_s;
+		flds->dot = flds->dot > -1 && (size_t)(flds->dot) > n_dgt ?
+			flds->dot - n_dgt : 0;
+		flds->width = (size_t)flds->width > (max_s + flds->dot) ?
+			flds->width - (max_s + flds->dot) : 0;
+		if (*n == '0' && !(*(n + 1)) && flds->dot == 0)
+			*n = '\0';
+		print_conv_i_utils(flds, n, fill);
+		free(n);
+	}
 }
