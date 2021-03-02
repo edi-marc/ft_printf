@@ -6,7 +6,7 @@
 #    By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/22 12:31:17 by edi-marc          #+#    #+#              #
-#    Updated: 2021/02/25 19:12:17 by edi-marc         ###   ########.fr        #
+#    Updated: 2021/03/02 15:49:06 by edi-marc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c \
 L_SRCS = $(addprefix libft/, $(SRCS))
 
 PF_SRCS = ft_printf.c ft_printf_utils.c ft_printf_conv_spec_utils.c \
-		  ft_printf_print_conv_utils.c \
+		  ft_printf_print_conv_utils_csid_ph.c ft_printf_print_conv_utils_pux.c \
 
 BSRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
