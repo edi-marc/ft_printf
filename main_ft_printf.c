@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/02 18:24:49 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/02 20:00:52 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,6 +304,10 @@ int		main(void)
 	printf("\n");
 	ft = ft_printf("[%*.*u]_[%*.*u]_[%*u]" , -2, 0, UINT_MAX, 2, 3, UINT_MAX + 1, 0, 0);
 	check_printf(ft, origin);
+	
+	magenta();
+	printf("\n---- TESTING x ----\n");
+	reset();
 
 	return (0);
 }

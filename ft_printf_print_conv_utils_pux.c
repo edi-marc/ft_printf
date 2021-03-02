@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:49:50 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/02 18:01:34 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/02 19:59:35 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,55 @@ void		print_conv_u(t_fields *flds, va_list ap)
 		flds->width = (size_t)flds->width > (n_dgt + flds->dot) ?
 			flds->width - (n_dgt + flds->dot) : 0;
 		print_conv_u_utils(flds, n, fill);
+		free(n);
+	}
+}
+
+/*
+**	WORK IN PROGRESS
+*/
+
+static void	print_conv_x_utils(t_fields *flds, char *n, char fill)
+{
+	if (flds->minus > 0)
+	{
+		while (flds->dot-- > 0)
+			putchar_ftprintf(ZERO, flds);
+		while (*n)
+			putchar_ftprintf(*n++, flds);
+		while (flds->width-- > 0)
+			putchar_ftprintf(SPACE, flds);
+	}
+	else
+	{
+		while (flds->width-- > 0)
+			putchar_ftprintf(fill, flds);
+		while (flds->dot-- > 0)
+			putchar_ftprintf(ZERO, flds);
+		while (*n)
+			putchar_ftprintf(*n++, flds);
+	}
+}
+
+void		print_conv_x(t_fields *flds, va_list ap)
+{
+	char	*n;
+	char	fill;
+	size_t	n_dgt;
+
+	if (!(n = ft_iutoa(va_arg(ap, unsigned int))))
+		flds->printed = ERR;
+	else
+	{
+		if (*n == '0' && !(*(n + 1)) && flds->dot == 0)
+			*n = '\0';
+		fill = flds->zero > 0 && !(flds->dot > -1) ? ZERO : SPACE;
+		n_dgt = ft_strlen(n);
+		flds->dot = flds->dot > -1 && (size_t)(flds->dot) > n_dgt ?
+			flds->dot - n_dgt : 0;
+		flds->width = (size_t)flds->width > (n_dgt + flds->dot) ?
+			flds->width - (n_dgt + flds->dot) : 0;
+		print_conv_x_utils(flds, n, fill);
 		free(n);
 	}
 }

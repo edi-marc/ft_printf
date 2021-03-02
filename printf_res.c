@@ -6,17 +6,18 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 17:19:53 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/02 18:26:15 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/02 19:54:45 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stdio.h"
+#include "limits.h"
 
 int	main(void)
 {
 	int i;
 
-	i = printf("[%0#+ .u]", 2);
+	i = printf("[%.x]", 0);
 	printf("\n");
 	printf("result= %d\n", i);
 
