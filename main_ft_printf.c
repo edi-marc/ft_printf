@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/01 20:27:36 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/02 15:24:06 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,9 +213,9 @@ int		main(void)
 	ft = ft_printf("[%-5i]_[%-0i]" , 1 , 2);
 	check_printf(ft, origin);
 
-	origin = printf("[%-i]_[%-i]" , null , 0);
+	origin = printf("[%-i]_[%-i]" , NULL , 0);
 	printf("\n");
-	ft = ft_printf("[%-i]_[%-i]" , null , 0);
+	ft = ft_printf("[%-i]_[%-i]" , NULL , 0);
 	check_printf(ft, origin);
 
 	//	Workaround for INT_MIN considering int as 4 bytes
@@ -224,9 +224,19 @@ int		main(void)
 	ft = ft_printf("[%-015i]_[%-020.15i]" ,-1 - 2147483647, INT_MAX);
 	check_printf(ft, origin);
 	
-	origin = printf("[%-i]_[%-i]" , null , 0);
+	origin = printf("[%06i]_[%06.d]_[%10i]_[%05.i]" , 42 , 2, 0, 0);
 	printf("\n");
-	ft = ft_printf("[%-i]_[%-i]" , null , 0);
+	ft = ft_printf("[%06i]_[%06.d]_[%10i]_[%05.i]" , 42 , 2, 0, 0);
+	check_printf(ft, origin);
+	
+	origin = printf("[%-04.3i]_[%-4.5i]_[%07d]_[%07.d]_[%7.2i]" , -2 , -42, -155, -155, -155);
+	printf("\n");
+	ft = ft_printf("[%-04.3i]_[%-4.5i]_[%07d]_[%07.d]_[%7.2i]" , -2 , -42, -155, -155, -155);
+	check_printf(ft, origin);
+	
+	origin = printf("[%0.0i]_[%1.0i]_[%d]" , 42, 42, 0);
+	printf("\n");
+	ft = ft_printf("[%0.0i]_[%1.0i]_[%d]" , 42, 42, 0);
 	check_printf(ft, origin);
 
 	return (0);

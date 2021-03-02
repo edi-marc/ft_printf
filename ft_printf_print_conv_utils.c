@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:10:32 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/01 20:31:45 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/02 15:24:29 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,8 @@ static void	print_conv_i_utils(t_fields *flds, char *n, char fill)
 	}
 	else
 	{
+		if (*n == MINUS && fill == ZERO)
+			putchar_ftprintf(*n++, flds);
 		while (flds->width-- > 0)
 			putchar_ftprintf(fill, flds);
 		if (*n == MINUS)
@@ -156,6 +158,8 @@ void		print_conv_i(t_fields *flds, va_list ap)
 		flds->printed = ERR;
 	else
 	{
+		if (*n == '0' && !(*(n + 1)) && flds->dot == 0)
+			*n = '\0';
 		fill = flds->zero > 0 && !(flds->dot > -1) ? ZERO : SPACE;
 		max_s = ft_strlen(n);
 		n_dgt = *n == MINUS && ft_isdigit(*(n + 1)) ? max_s - 1 : max_s;
@@ -163,8 +167,6 @@ void		print_conv_i(t_fields *flds, va_list ap)
 			flds->dot - n_dgt : 0;
 		flds->width = (size_t)flds->width > (max_s + flds->dot) ?
 			flds->width - (max_s + flds->dot) : 0;
-		if (*n == '0' && !(*(n + 1)) && flds->dot == 0)
-			*n = '\0';
 		print_conv_i_utils(flds, n, fill);
 		free(n);
 	}
