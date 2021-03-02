@@ -6,7 +6,7 @@
 #    By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/22 12:31:17 by edi-marc          #+#    #+#              #
-#    Updated: 2021/03/02 15:49:06 by edi-marc         ###   ########.fr        #
+#    Updated: 2021/03/02 17:46:49 by edi-marc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c \
 	   ft_strnstr.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
 	   ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
 	   ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+	   ft_iutoa_bonus.c \
 
 L_SRCS = $(addprefix libft/, $(SRCS))
 

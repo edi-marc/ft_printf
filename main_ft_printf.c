@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/02 15:24:06 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/02 18:24:49 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,10 @@ int		main(void)
 	ft = ft_printf("\x7f");
 	check_printf(ft, origin);
 	
+	magenta();
+	printf("\n---- TESTING c ----\n");
+	reset();
+
 	origin = printf("cia%c", 'o');
 	printf("\n");
 	ft = ft_printf("cia%c", 'o');
@@ -162,7 +166,21 @@ int		main(void)
 	printf("\n");
 	ft = ft_printf("[Hell%---000*c_Worl%-0*c]", 12, 'o' , -6, 'd');
 	check_printf(ft, origin);
+
+	origin = printf("Hell%.*c_Wor%.0cd", -1, 'o', 'l');
+	printf("\n");
+	ft = ft_printf("Hell%.*c_Wor%.0cd", -1, 'o', 'l');
+	check_printf(ft, origin);
 	
+	origin = printf("[%5c]_[%-0c]" , NULL , "");
+	printf("\n");
+	ft = ft_printf("[%5c]_[%-0c]" , NULL , "");
+	check_printf(ft, origin);
+
+	magenta();
+	printf("\n---- TESTING placeholder ----\n");
+	reset();
+
 	origin = printf("%-%%-0%%0%%-5%%5%%000%%-0.1%%-02%%-3%");
 	printf("\n");
 	ft = ft_printf("%-%%-0%%0%%-5%%5%%000%%-0.1%%-02%%-3%");
@@ -178,11 +196,10 @@ int		main(void)
 	ft = ft_printf("%005%_%.c", '1');
 	check_printf(ft, origin);
 	
-	origin = printf("Hell%.*c_Wor%.0cd", -1, 'o', 'l');
-	printf("\n");
-	ft = ft_printf("Hell%.*c_Wor%.0cd", -1, 'o', 'l');
-	check_printf(ft, origin);
-	
+	magenta();
+	printf("\n---- TESTING s ----\n");
+	reset();
+
 	origin = printf("[%-8.5s]_%s" , NULL, "Hello_World");
 	printf("\n");
 	ft = ft_printf("[%-8.5s]_%s", NULL, "Hello_World");
@@ -203,10 +220,9 @@ int		main(void)
 	ft = ft_printf("[%3.7s]_[%7.7s]", "Hello" , "World");
 	check_printf(ft, origin);
 
-	origin = printf("[%5c]_[%-0c]" , NULL , "");
-	printf("\n");
-	ft = ft_printf("[%5c]_[%-0c]" , NULL , "");
-	check_printf(ft, origin);
+	magenta();
+	printf("\n---- TESTING i / d ----\n");
+	reset();
 
 	origin = printf("[%-5i]_[%-0i]" , 1 , 2);
 	printf("\n");
@@ -237,6 +253,56 @@ int		main(void)
 	origin = printf("[%0.0i]_[%1.0i]_[%d]" , 42, 42, 0);
 	printf("\n");
 	ft = ft_printf("[%0.0i]_[%1.0i]_[%d]" , 42, 42, 0);
+	check_printf(ft, origin);
+	
+	origin = printf("[%*.*i]_[%*.*i]_[%*d]" , -2, 0, 42, 2, 3, 42, 0, 0);
+	printf("\n");
+	ft = ft_printf("[%*.*i]_[%*.*i]_[%*d]" , -2, 0, 42, 2, 3, 42, 0, 0);
+	check_printf(ft, origin);
+	
+	magenta();
+	printf("\n---- TESTING u ----\n");
+	reset();
+
+	origin = printf("[%-5u]_[%-0u]" , 1 , 2);
+	printf("\n");
+	ft = ft_printf("[%-5u]_[%-0u]" , 1 , 2);
+	check_printf(ft, origin);
+
+	origin = printf("[%-u]_[%-u]" , NULL , 0);
+	printf("\n");
+	ft = ft_printf("[%-u]_[%-u]" , NULL , 0);
+	check_printf(ft, origin);
+
+	//	Workaround for INT_MIN considering int as 4 bytes
+	origin = printf("[%-015u]_[%-020.15u]_[%u]_[%u]-[%u]" ,-1 - 2147483647, INT_MAX, INT_MAX + 1, INT_MIN - 1, -1);
+	printf("\n");
+	ft = ft_printf("[%-015u]_[%-020.15u]_[%u]_[%u]_[%u]" ,-1 - 2147483647, INT_MAX, INT_MAX + 1, INT_MIN - 1, -1);
+	check_printf(ft, origin);
+	
+	origin = printf("[%06u]_[%06.u]_[%10u]_[%05.u]" , 42 , 2, 0, 0);
+	printf("\n");
+	ft = ft_printf("[%06u]_[%06.u]_[%10u]_[%05.u]" , 42 , 2, 0, 0);
+	check_printf(ft, origin);
+	
+	origin = printf("[%-04.3u]_[%-4.5u]_[%07u]_[%07.u]_[%7.2u]" , -2 , -42, -155, -155, -155);
+	printf("\n");
+	ft = ft_printf("[%-04.3u]_[%-4.5u]_[%07u]_[%07.u]_[%7.2u]" , -2 , -42, -155, -155, -155);
+	check_printf(ft, origin);
+	
+	origin = printf("[%0.0u]_[%1.0u]_[%u]" , 42, 42, 0);
+	printf("\n");
+	ft = ft_printf("[%0.0u]_[%1.0u]_[%u]" , 42, 42, 0);
+	check_printf(ft, origin);
+	
+	origin = printf("[%*.*u]_[%*.*u]_[%*u]" , -2, 0, 42, 2, 3, 42, 0, 0);
+	printf("\n");
+	ft = ft_printf("[%*.*u]_[%*.*u]_[%*u]" , -2, 0, 42, 2, 3, 42, 0, 0);
+	check_printf(ft, origin);
+	
+	origin = printf("[%*.*u]_[%*.*u]_[%*u]" , -2, 0, UINT_MAX, 2, 3, UINT_MAX + 1, 0, 0);
+	printf("\n");
+	ft = ft_printf("[%*.*u]_[%*.*u]_[%*u]" , -2, 0, UINT_MAX, 2, 3, UINT_MAX + 1, 0, 0);
 	check_printf(ft, origin);
 
 	return (0);
