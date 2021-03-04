@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 14:23:25 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/03 10:26:03 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/04 15:38:55 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char				**ft_split(char const *s, char c);
 char				*ft_itoa(int n);
 char				*ft_iutoa(unsigned int n);
 char				*ft_iutoa_base(unsigned int n, char *base);
+char				*ft_iultoa_base(unsigned long int n, char *base);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void				ft_putchar_fd(char c, int fd);
 void				ft_putnbr_fd(int n, int fd);

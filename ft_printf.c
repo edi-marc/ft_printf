@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:07:56 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/03 10:12:54 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/04 15:34:40 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	print_conv(t_fields *flds, va_list ap)
 			print_conv_x(flds, ap, HEX);
 		else if (flds->type == 'X')
 			print_conv_x(flds, ap, HEX_U);
+		else if (flds->type == 'p')
+			print_conv_p(flds, ap, HEX);
 		reset_fields(flds);
 	}
 }

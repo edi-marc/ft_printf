@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_print_conv_utils_pux.c                   :+:      :+:    :+:   */
+/*   ft_printf_print_conv_utils_ux.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 15:49:50 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/04 13:29:39 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/03/04 15:07:41 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/03/04 15:33:12 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void	print_conv_x_utils(t_fields *flds, char *n, char fill)
 {
 	if (flds->minus > 0)
 	{
-		if (flds->hash > 0 )
+		if (flds->hash > 0)
 			print_hash_prefix(flds);
 		while (flds->dot-- > 0)
 			putchar_ftprintf(ZERO, flds);
@@ -112,9 +112,7 @@ void		print_conv_x(t_fields *flds, va_list ap, char *base)
 	char	*n;
 	char	fill;
 	size_t	n_dgt;
-	size_t	px_len;
 
-	px_len = 2;
 	if (!(n = ft_iutoa_base(va_arg(ap, unsigned int), base)))
 		flds->printed = ERR;
 	else
@@ -125,15 +123,14 @@ void		print_conv_x(t_fields *flds, va_list ap, char *base)
 			if (flds->dot == 0)
 				*n = '\0';
 		}
-		fill = flds->zero > 0 && !(flds->dot > -1) ?
-			ZERO : SPACE;
+		fill = flds->zero > 0 && !(flds->dot > -1) ? ZERO : SPACE;
 		n_dgt = ft_strlen(n);
 		flds->dot = flds->dot > -1 && (size_t)(flds->dot) > n_dgt ?
 			flds->dot - n_dgt : 0;
 		flds->width = (size_t)flds->width > (n_dgt + flds->dot) ?
 			flds->width - (n_dgt + flds->dot) : 0;
 		if (flds->hash > 0)
-			flds->width -= px_len;
+			flds->width -= LEN_PX;
 		print_conv_x_utils(flds, n, fill);
 		free(n);
 	}

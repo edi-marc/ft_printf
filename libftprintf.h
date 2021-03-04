@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:02:15 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/03 20:07:10 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/04 15:37:19 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 **	value on TYPES
 */
 # define PH '%'
-# define TYPES "cspiduxXnfge%"
+# define TYPES "cspiduxX%"
 # define ZERO 48
 # define SPACE 32
 # define MINUS '-'
@@ -32,6 +32,12 @@
 # define STAR '*'
 # define FLAGS "-0#+\32"
 # define PREC '.'
+
+/*
+**	LEN_PX is the lenght of the prefix
+**	used by 'x' / 'X' / 'p' conversions
+*/
+# define LEN_PX 2
 # define HEX "0123456789abcdef"
 # define HEX_U "0123456789ABCDEF"
 
@@ -62,5 +68,6 @@ void			print_conv_i(t_fields *flds, va_list ap);
 void			print_conv_ph(t_fields *flds);
 void			print_conv_u(t_fields *flds, va_list ap);
 void			print_conv_x(t_fields *flds, va_list ap, char *base);
+void			print_conv_p(t_fields *flds, va_list ap, char *base);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/04 13:29:36 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/04 15:32:26 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -414,6 +414,11 @@ int		main(void)
 	printf("\n");
 	ft = ft_printf("[%#4.3x]_[%#4.4x]_[%#4x]_[%#-4.x]_[%#-4.*x]" , UINT_MAX, UINT_MAX, UINT_MAX, UINT_MAX, -4, UINT_MAX);
 	check_printf(ft, origin);
-
+	
+	origin = printf("[%-#.4x]_[%0x]_[%005.6x]" , 1, 42, 3);
+	printf("\n");
+	ft = ft_printf("[%-#.4x]_[%0x]_[%005.6x]" , 1, 42, 3);
+	check_printf(ft, origin);
+	
 	return (0);
 }
