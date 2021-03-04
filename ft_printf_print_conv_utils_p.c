@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 15:47:34 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/04 16:06:22 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/04 16:47:18 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ static void	print_conv_p_utils(t_fields *flds, char *n, char fill)
 	else
 	{
 		if (fill == ZERO)
-			print_hash_prefix(flds);
+			print_p_prefix(flds);
 		while (flds->width-- > 0)
 			putchar_ftprintf(fill, flds);
 		if (fill != ZERO)
-			print_hash_prefix(flds);
+			print_p_prefix(flds);
 		while (flds->dot-- > 0)
 			putchar_ftprintf(ZERO, flds);
 		while (*n)
@@ -68,6 +68,8 @@ void		print_conv_p(t_fields *flds, va_list ap, char *base)
 		flds->printed = ERR;
 	else
 	{
+		if (*n == *base && !(*(n + 1)) && flds->dot == 0)
+			*n = '\0';
 		fill = flds->zero > 0 && !(flds->dot > -1) ?
 			ZERO : SPACE;
 		n_dgt = ft_strlen(n);

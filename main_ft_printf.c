@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/04 15:32:26 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/04 17:08:45 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -420,5 +420,35 @@ int		main(void)
 	ft = ft_printf("[%-#.4x]_[%0x]_[%005.6x]" , 1, 42, 3);
 	check_printf(ft, origin);
 	
+	magenta();
+	printf("\n---- TESTING p ----\n");
+	reset();
+	
+	origin = printf("[%#-5p]_[%#-0p]" , 1 , 2);
+	printf("\n");
+	ft = ft_printf("[%#-5p]_[%#-0p]" , 1 , 2);
+	check_printf(ft, origin);
+	
+	origin = printf("[%-16p]_[%-10p]" , &ft, &ft);
+	printf("\n");
+	ft = ft_printf("[%-16p]_[%-10p]" , &ft, &ft);
+	check_printf(ft, origin);
+
+	origin = printf("[%###-.3p]_[%##-.p]" , NULL , 0);
+	printf("\n");
+	ft = ft_printf("[%###-.3p]_[%##-.p]" , NULL , 0);
+	check_printf(ft, origin);
+
+	//	Workaround for INT_MIN considering int as 4 bytes
+	origin = printf("[%#-015p]_[%#-020.15p]_[%#p]_[%#p]-[%#p]" ,-1 - 2147483647, INT_MAX, INT_MAX + 1, INT_MIN - 1, -1);
+	printf("\n");
+	ft = ft_printf("[%#-015p]_[%#-020.15p]_[%#p]_[%#p]_[%#p]" ,-1 - 2147483647, INT_MAX, INT_MAX + 1, INT_MIN - 1, -1);
+	check_printf(ft, origin);
+	
+	origin = printf("[%#-015p]_[%#-020.15p]_[%#p]_[%#p]-[%#p]" ,UINT_MAX, UINT_MAX + 1, &ft, &origin, -1);
+	printf("\n");
+	ft = ft_printf("[%#-015p]_[%#-020.15p]_[%#p]_[%#p]-[%#p]" ,UINT_MAX, UINT_MAX + 1, &ft, &origin, -1);
+	check_printf(ft, origin);
+
 	return (0);
 }
