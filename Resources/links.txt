@@ -1,0 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    links.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/03/04 17:40:09 by edi-marc          #+#    #+#              #
+#    Updated: 2021/03/04 17:41:04 by edi-marc         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+https://en.wikipedia.org/wiki/Printf_format_string
+
+https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html
+
+http://www.cplusplus.com/reference/cstdio/printf/
+
+https://www.khronos.org/registry/OpenCL/sdk/1.2/docs/man/xhtml/printfFunction.html#:~:text=The%20behavior%20of%20printf%20with,that%20many%20bytes%20are%20written.
+
+https://velog.io/@ljiwoo59/ftprintf
