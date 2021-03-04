@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:53:54 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/03 15:35:18 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/04 13:29:36 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -348,6 +348,71 @@ int		main(void)
 	origin = printf("[%*.*x]_[%*.*X]_[%*X]" , -2, 0, UINT_MAX, 2, 3, UINT_MAX + 1, 0, 0);
 	printf("\n");
 	ft = ft_printf("[%*.*x]_[%*.*X]_[%*X]" , -2, 0, UINT_MAX, 2, 3, UINT_MAX + 1, 0, 0);
+	check_printf(ft, origin);
+	
+	magenta();
+	printf("\n---- TESTING # with x / X ----\n");
+	reset();
+	
+	origin = printf("[%#-5x]_[%#-0X]" , 1 , 2);
+	printf("\n");
+	ft = ft_printf("[%#-5x]_[%#-0X]" , 1 , 2);
+	check_printf(ft, origin);
+
+	origin = printf("[%###-.3x]_[%##-.X]" , NULL , 0);
+	printf("\n");
+	ft = ft_printf("[%###-.3x]_[%##-.X]" , NULL , 0);
+	check_printf(ft, origin);
+
+	//	Workaround for INT_MIN considering int as 4 bytes
+	origin = printf("[%#-015x]_[%#-020.15x]_[%#X]_[%#X]-[%#x]" ,-1 - 2147483647, INT_MAX, INT_MAX + 1, INT_MIN - 1, -1);
+	printf("\n");
+	ft = ft_printf("[%#-015x]_[%#-020.15x]_[%#X]_[%#X]_[%#x]" ,-1 - 2147483647, INT_MAX, INT_MAX + 1, INT_MIN - 1, -1);
+	check_printf(ft, origin);
+
+	origin = printf("[%#06x]_[%#06.x]_[%#10x]_[%#05x]" , 42 , 2, 0, 0);
+	printf("\n");
+	ft = ft_printf("[%#06x]_[%#06.x]_[%#10x]_[%#05x]" , 42 , 2, 0, 0);
+	check_printf(ft, origin);
+	
+	origin = printf("[%#-04.3X]_[%#-4.5X]_[%#07x]_[%#07.x]_[%#7.2x]" , -2 , -42, -155, -155, -155);
+	printf("\n");
+	ft = ft_printf("[%#-04.3X]_[%#-4.5X]_[%#07x]_[%#07.x]_[%#7.2x]" , -2 , -42, -155, -155, -155);
+	check_printf(ft, origin);
+	
+	origin = printf("[%#0.0x]_[%#1.0x]_[%#x]" , 42, 42, 0);
+	printf("\n");
+	ft = ft_printf("[%#0.0x]_[%#1.0x]_[%#x]" , 42, 42, 0);
+	check_printf(ft, origin);
+	
+	origin = printf("[%#*.*x]_[%#*.*x]_[%#*x]" , -2, 0, 42, 2, 3, 42, 0, 0);
+	printf("\n");
+	ft = ft_printf("[%#*.*x]_[%#*.*x]_[%#*x]" , -2, 0, 42, 2, 3, 42, 0, 0);
+	check_printf(ft, origin);
+	
+	origin = printf("[%#*.*x]_[%#*.*X]_[%#*X]" , -2, 0, UINT_MAX, 2, 3, UINT_MAX + 1, 0, 0);
+	printf("\n");
+	ft = ft_printf("[%#*.*x]_[%#*.*X]_[%#*X]" , -2, 0, UINT_MAX, 2, 3, UINT_MAX + 1, 0, 0);
+	check_printf(ft, origin);
+
+	origin = printf("[%#10x]_[%#010x]_[%#-010x]" , 42, 42, 3);
+	printf("\n");
+	ft = ft_printf("[%#10x]_[%#010x]_[%#-010x]" , 42, 42, 3);
+	check_printf(ft, origin);
+	
+	origin = printf("[%#x]_[%#2x]_[%#02x]_[%#-03x]" , 1, 1, 1, 1);
+	printf("\n");
+	ft = ft_printf("[%#x]_[%#2x]_[%#02x]_[%#-03x]" , 1, 1, 1, 1);
+	check_printf(ft, origin);
+	
+	origin = printf("[%#-03.x]_[%#-03.1x]_[%#03.2x]_[%#-03.*x]" , 1, 1, 1, 2, 1);
+	printf("\n");
+	ft = ft_printf("[%#-03.x]_[%#-03.1x]_[%#03.2x]_[%#-03.*x]" , 1, 1, 1, 2, 1);
+	check_printf(ft, origin);
+	
+	origin = printf("[%#4.3x]_[%#4.4x]_[%#4x]_[%#-4.x]_[%#-4.*x]" , UINT_MAX, UINT_MAX, UINT_MAX, UINT_MAX, -4, UINT_MAX);
+	printf("\n");
+	ft = ft_printf("[%#4.3x]_[%#4.4x]_[%#4x]_[%#-4.x]_[%#-4.*x]" , UINT_MAX, UINT_MAX, UINT_MAX, UINT_MAX, -4, UINT_MAX);
 	check_printf(ft, origin);
 
 	return (0);

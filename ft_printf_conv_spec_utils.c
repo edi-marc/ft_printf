@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 18:12:27 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/27 17:03:16 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/03 19:42:52 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	get_flag(char c, t_fields *flds)
 		flds->minus++;
 	else if (c == '0')
 		flds->zero++;
+	else if (c == '#')
+		flds->hash++;
 }
 
 char	*get_width(char *p, t_fields *flds, va_list ap)

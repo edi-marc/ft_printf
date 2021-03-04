@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:02:15 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/03 10:09:30 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/03/03 20:07:10 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define STAR '*'
 # define FLAGS "-0#+\32"
 # define PREC '.'
-
 # define HEX "0123456789abcdef"
 # define HEX_U "0123456789ABCDEF"
 
