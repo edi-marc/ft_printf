@@ -19,3 +19,9 @@ http://www.cplusplus.com/reference/cstdio/printf/
 https://www.khronos.org/registry/OpenCL/sdk/1.2/docs/man/xhtml/printfFunction.html#:~:text=The%20behavior%20of%20printf%20with,that%20many%20bytes%20are%20written.
 
 https://velog.io/@ljiwoo59/ftprintf
+
+https://harm-smits.github.io/42docs/
+
+https://stackoverflow.com/questions/1565164/what-is-the-rationale-for-all-comparisons-returning-false-for-ieee754-nan-values/1573715#1573715
+
+https://app.diagrams.net/
