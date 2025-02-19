@@ -6,7 +6,7 @@
 /*   By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 19:06:19 by emdi-mar          #+#    #+#             */
-/*   Updated: 2025/02/19 19:08:06 by emdi-mar         ###   ########.fr       */
+/*   Updated: 2025/02/19 23:45:05 by emdi-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **	appears in the type field, ERR is returned, and the write is stopped.
 */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	get_flag(char c, t_fields *flds)
 {

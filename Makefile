@@ -6,7 +6,7 @@
 #    By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/19 14:30:20 by emdi-mar          #+#    #+#              #
-#    Updated: 2025/02/19 22:52:11 by emdi-mar         ###   ########.fr        #
+#    Updated: 2025/02/19 23:42:59 by emdi-mar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS = ft_printf.c ft_printf_utils.c ft_printf_conv_spec_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 
-HEADERS = libftprintf.h
+HEADERS = ft_printf.h
 
 LIBFT_DIR = libft
 

@@ -6,11 +6,11 @@
 /*   By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:24:04 by emdi-mar          #+#    #+#             */
-/*   Updated: 2025/02/19 22:24:07 by emdi-mar         ###   ########.fr       */
+/*   Updated: 2025/02/19 23:47:30 by emdi-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	init_fields(t_fields *flds)
 {

@@ -6,7 +6,7 @@
 /*   By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 19:42:59 by emdi-mar          #+#    #+#             */
-/*   Updated: 2025/02/19 19:43:13 by emdi-mar         ###   ########.fr       */
+/*   Updated: 2025/02/19 23:45:36 by emdi-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 **		the specification of the specifier 'c'
 */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	print_conv_c(t_fields *flds, va_list ap)
 {

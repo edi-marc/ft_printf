@@ -6,7 +6,7 @@
 /*   By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 19:36:06 by emdi-mar          #+#    #+#             */
-/*   Updated: 2025/02/19 22:21:27 by emdi-mar         ###   ########.fr       */
+/*   Updated: 2025/02/19 23:46:35 by emdi-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 **              if a precision is specified, the 0 flag is ignored
 */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static void	print_conv_s_2(t_fields *flds, size_t max_s, char *s, char fill)
 {

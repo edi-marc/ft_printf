@@ -6,7 +6,7 @@
 /*   By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:53:52 by emdi-mar          #+#    #+#             */
-/*   Updated: 2025/02/19 23:07:33 by emdi-mar         ###   ########.fr       */
+/*   Updated: 2025/02/19 23:47:10 by emdi-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 **		if a precision is specified, the 0 flag is ignored
 */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static void	print_hash_prefix(t_fields *flds)
 {
