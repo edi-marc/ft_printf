@@ -23,15 +23,9 @@ The repository contains a main, useful to test the ft_printf function.
 
 ### Build the library
 
-The following command builds the library, without the bonus functions
+The following command builds the complete library, also with the libft bonus functions
 ```
 make re
-```
-
-
-The following command builds the complete library, also with the bonus functions
-```
-make bre
 ```
 
 
