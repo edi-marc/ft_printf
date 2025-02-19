@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_res.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/24 17:19:53 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/03/04 16:04:07 by edi-marc         ###   ########.fr       */
+/*   Created: 2024/05/29 00:10:08 by emdi-mar          #+#    #+#             */
+/*   Updated: 2024/05/29 00:10:24 by emdi-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdio.h"
-#include "limits.h"
+#include "libft.h"
 
-int	main(void)
+size_t	ft_strlen(const char *s)
 {
-	int i;
-	int j;
+	size_t	i;
 
-	i = printf("[%025p]_{%25.20x}", &i , &j);
-	printf("\n");
-	printf("result= %d\n", i);
-
-	return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
