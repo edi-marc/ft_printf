@@ -9,9 +9,14 @@ that will mimic the real printf.
 
 See the subjects for further information
 
-[SUBJECTS](Resources/en.subject.pdf)
+[SUBJECT](Resources/ft_printf_subject_10.pdf)
+
+[OLD_SUBJECT](Resources/ft_printf_v1/en.subject.pdf)
+
 
 ## Getting Started
+
+The project inside the folder [ft_printf_v1](ft_printf_v1) refers to an initial and much older version, tested only on the Mac OS operating system.
 
 The repository contains a main, usefull to test the ft_printf function.
 
