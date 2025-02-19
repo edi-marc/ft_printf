@@ -6,7 +6,7 @@
 /*   By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 23:43:27 by emdi-mar          #+#    #+#             */
-/*   Updated: 2025/02/19 23:43:48 by emdi-mar         ###   ########.fr       */
+/*   Updated: 2025/02/20 00:00:15 by emdi-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define SPACE 32
 # define MINUS '-'
 # define STR_N "(null)"
+# define PTR_N "(nil)"
 # define STAR '*'
 # define FLAGS "-0#+\32"
 # define PREC '.'

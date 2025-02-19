@@ -6,7 +6,7 @@
 /*   By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:26:35 by emdi-mar          #+#    #+#             */
-/*   Updated: 2025/02/19 23:46:18 by emdi-mar         ###   ########.fr       */
+/*   Updated: 2025/02/20 00:41:45 by emdi-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,22 @@ static void	print_conv_p_utils(t_fields *flds, char *n, char fill)
 	}
 }
 
+static void	print_conv_p_2(t_fields *flds, char *n, char fill)
+{
+	if (*n == ZERO)
+	{
+		free(n);
+		n = PTR_N;
+		while (*n)
+			putchar_ftprintf(*n++, flds);
+	}
+	else
+	{
+		print_conv_p_utils(flds, n, fill);
+		free(n);
+	}
+}
+
 void	print_conv_p(t_fields *flds, va_list ap, char *base)
 {
 	char	*n;
@@ -81,7 +97,6 @@ void	print_conv_p(t_fields *flds, va_list ap, char *base)
 		flds->width = 0;
 		if ((size_t)flds->width > (n_dgt + flds->dot + LEN_PX))
 			flds->width = flds->width - (n_dgt + flds->dot + LEN_PX);
-		print_conv_p_utils(flds, n, fill);
-		free(n);
+		print_conv_p_2(flds, n, fill);
 	}
 }
